@@ -1,78 +1,64 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        front-page
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div>
+    <main>
+      <section class="header-clipping pt-10">
+				<image href="" class="absolute left-0 bottom-0"/>
+				<div class="sunshine"></div>
+				<div class="container mx-auto">
+          <HeaderParts/>
+          <HeroParts/>
+        </div>
+			</section>
+    </main>
   </div>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
+.header-clipping {
+  position: relative;
 }
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.header-clipping .container {
+  position: relative;
+  z-index: 3;
 }
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.header-clipping .sunshine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width:515px;
+  height: 90%;
+  opacity: 0.8;
+  clip-path: polygon(46% 0%,82% 0%,67% 100%,0% 100%);
+  background: transparent linear-gradient(130.09deg,#3d47bd 0%, #2e37a4 50.8%)
 }
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.header-clipping:before{
+  @apply w-full bg-indigo-900 inset-0 absolute;
+  content: "";
+  height: 648px;
+  clip-path: polygon(0 0, 100% 0, 100% 86%, 0% 100%)
 }
 </style>
+
+<script>
+// import {mapState} from "vuex"
+
+export default {
+  // async fetch ({store,error}){
+  //   try {
+  //     await store.dispatch('courses/fetchCourses')
+  //   } catch(error) {
+      
+  //   }
+  // },
+  // mounted(){
+  //   let toast = document.getElementById('toastError');
+  //   setTimeout(function(){
+  //     toast.classList.toggle('hidden')
+  //   },10000)
+  // },
+  // computed: {
+  //   ...mapState(['courses'])
+  // }
+}
+</script>
