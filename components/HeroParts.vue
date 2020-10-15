@@ -11,7 +11,7 @@
             <form>
                 <input type="text" class="bg-white focus:outline-none border-0 px-6 py-3 w-1/2" placeholder="your email address">
                 <button class="bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3">
-                    Daftar Sekarang
+                    Daftar Now
                 </button>
             </form>
         </div>
@@ -25,7 +25,7 @@
                         alt="Hero Image"
                         />
                 </div>
-                <div class="absolute z-10 bg-white py-3 px-4 mt-24" style="transform: translateX(-63%); width: 275px">
+                <div class="absolute z-10 bg-white py-3 px-4 mt-24" style="transform: translateX(-58%); width: 275px">
                     <p class="text-gray-900 mb-2">
                         metode belajar yang santai seperti nonton drakor di netflix
                     </p>

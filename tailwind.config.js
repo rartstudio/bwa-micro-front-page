@@ -23,15 +23,15 @@ module.exports = {
       white: '#fff',
 
       gray: {
-        100: '#f7fafc',
-        200: '#edf2f7',
-        300: '#e2e8f0',
-        400: '#cbd5e0',
-        500: '#a0aec0',
-        600: '#718096',
-        700: '#4a5568',
-        800: '#2d3748',
-        900: '#1a202c',
+        100: "#F7F7F7",
+        200: "#E8F0FA",
+        300: "#DBDBDB",
+        400: "#cbd5e0",
+        500: "#a0aec0",
+        600: "#7186A0",
+        700: "#4a5568",
+        800: "#333769",
+        900: "#132B50",
       },
       orange: {
         100: '#fffaf0',
@@ -177,6 +177,13 @@ module.exports = {
     divideWidth: theme => theme('borderWidth'),
     fill: {
       current: 'currentColor',
+      orange: {
+        500: '#ed8936',
+      },
+      gray: {
+        600 : '#7186A0'
+      },
+      white: '#fff'
     },
     flex: {
       '1': '1 1 0%',

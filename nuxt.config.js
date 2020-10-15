@@ -27,6 +27,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/svg'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -53,12 +54,16 @@ export default {
     port: 3001
   },
 
-  mode : 'universal',
-
   vue: {
     config: {
       productionTip: false,
       devtools: true
     }
-  }
+  },
+
+  //loading-bar
+  loading: { 
+    color: '#ed8936',
+    height: '5px' 
+  },
 }
