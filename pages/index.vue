@@ -24,7 +24,7 @@
           </template>
         </HeaderCoursesPart>
         <div class="flex justify-start items-center flex-wrap -mx-4 mt-6">
-          <CoursePart v-for="item in courses.course" :key="item.id" :item="item"/>
+          <!-- <CoursePart v-for="item in courses.course" :key="item.id" :item="item"/> -->
         </div>
         <!-- <div class="w-full text-center -py-12">No Item Found</div> -->
       </section>

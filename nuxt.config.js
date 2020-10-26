@@ -27,7 +27,16 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/svg'
+    '@nuxtjs/svg',
+    ['vue-currency-filter/nuxt', {
+      symbol: '',
+      thousandsSeparator: '.',
+      fractionCount: 0,
+      fractionSeparator: '.',
+      symbolPosition: 'front',
+      symbolSpacing: true,
+      avoidEmptyDecimals: undefined,
+    }]
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)

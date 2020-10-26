@@ -9,7 +9,7 @@
                         Business Development
                     </h4>
                     <h5 class="text-sm text-gray-600 transition-all mt-2 duration-500">
-                        12483
+                        <span>{{ 12483 | currency}}</span>
                     </h5>
                     <nuxt-link class="link-wrapped" to="/"></nuxt-link>
                 </div>
@@ -24,7 +24,7 @@
                         Content Writer
                     </h4>
                     <h5 class="text-sm text-gray-600 transition-all mt-2 duration-500">
-                        839
+                        <span>{{ 839 | currency}}</span>
                     </h5>
                     <nuxt-link class="link-wrapped" to="/"></nuxt-link>
                 </div>
@@ -39,7 +39,7 @@
                         Product Advertisement
                     </h4>
                     <h5 class="text-sm text-gray-600 transition-all mt-2 duration-500">
-                        478
+                        <span>{{ 478 | currency}}</span>
                     </h5>
                     <nuxt-link class="link-wrapped" to="/"></nuxt-link>
                 </div>
@@ -54,7 +54,7 @@
                         Customer Relationship
                     </h4>
                     <h5 class="text-sm text-gray-600 transition-all mt-2 duration-500">
-                        553
+                        <span>{{ 553 | currency}}</span>
                     </h5>
                     <nuxt-link class="link-wrapped" to="/"></nuxt-link>
                 </div>
@@ -69,7 +69,7 @@
                         Game Development
                     </h4>
                     <h5 class="text-sm text-gray-600 transition-all mt-2 duration-500">
-                        7309
+                        <span>{{ 7309 | currency}}</span>
                     </h5>
                     <nuxt-link class="link-wrapped" to="/"></nuxt-link>
                 </div>
@@ -84,7 +84,7 @@
                         Travel Guidance
                     </h4>
                     <h5 class="text-sm text-gray-600 transition-all mt-2 duration-500">
-                        73
+                        <span>{{ 73 | currency}}</span>
                     </h5>
                     <nuxt-link class="link-wrapped" to="/"></nuxt-link>
                 </div>
@@ -101,8 +101,11 @@ import CustomerRelationship from '~/assets/icon-customer-relationship.svg?inline
 import GameDevelopment from '~/assets/icon-game-development.svg?inline'
 import TravelGuidance from '~/assets/icon-travel-guidance.svg?inline'
 
+import VueCurrencyFilter from 'vue-numeric';
+
 export default {
     components: {
+        VueCurrencyFilter,
         BusinessDevelopment,
         ContentWriter,
         ProductAdvertisement,
