@@ -23,10 +23,14 @@
             </div>
           </template>
         </HeaderCoursesPart>
-        <div class="flex justify-start items-center flex-wrap -mx-4 mt-6">
-          <!-- <CoursePart v-for="item in courses.course" :key="item.id" :item="item"/> -->
-        </div>
-        <!-- <div class="w-full text-center -py-12">No Item Found</div> -->
+        <template v-if="course.courses.length != 0">
+          <div class="flex justify-start items-center flex-wrap -mx-4 mt-6">
+            <CoursePart v-for="item in course.courses" :key="item.id" :item="item"/>
+          </div>
+        </template>
+        <template v-else>
+          <div class="w-full text-center -py-12">No Item Found</div>
+        </template>
       </section>
       <section class="container mx-auto pt-24 px-4">
         <HeaderCoursesPart>
@@ -99,7 +103,7 @@ export default {
   },
   async fetch ({store,error}){
     try {
-      await store.dispatch('courses/fetchCourses')
+      await store.dispatch('course/fetchCourses')
     } catch(error) {
       
     }
@@ -111,7 +115,7 @@ export default {
     },10000)
   },
   computed: {
-    ...mapState(['courses'])
+    ...mapState(['course'])
   }
 }
 </script>

@@ -9,23 +9,19 @@ export const state = () => ({
 })
 
 export const mutations = {
-    SET_COURSE(state,course){
-        state.course = course
-    },
     SET_ERROR_STATUS(state,error){
         state.error = error
     }
 }
 
 export const actions = {
-    fetchCourses({commit}){
-        return CoursesService.getCourses()
+    testMedia({commit}){
+        return CoursesService.getMedia()
             .then(response => {
-                console.log(response.data.data.data);
-                // console.log(response.data.data.data);
-                commit('SET_COURSE', response.data.data.data);
+                console.log(response);
             })
             .catch(error => {
+                console.log(error);
                 if(error.errno == 'ECONNREFUSED'){
                     commit('SET_ERROR_STATUS',true);
                 }

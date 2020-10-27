@@ -11,23 +11,32 @@
                   <h4 class="text-lg text-gray-900 item-title">{{item.name.toUpperCase()}}</h4>
                   <h5 class="text-sm text-gray-600">{{item.level}}</h5>
               </div>
-              <nuxt-link to="/" class="link-wrapped"></nuxt-link>
+              <nuxt-link :to="'/courses/'+ item.id" class="link-wrapped"></nuxt-link>
         </div>
     </div>
 </template>
 
 <script>
 import IconPlay from '~/assets/icon-play.svg?inline';
-    export default {
-      components: {
-        IconPlay
-      },
-      props : {
-        item : {
-          type : Object
-        }
-      }
+import imagePlaceholder from 'vuejs-image-placeholder'
+export default {
+  data(){
+    return {
+      borderColour: '#fff',
+      backgroundColour: '#dcdee8',
+      fontFamily: 'Poppins, sans-serif'
     }
+  },
+  components: {
+    IconPlay,
+    imagePlaceholder,
+  },
+  props : {
+    item : {
+      type : Object
+    }
+  }
+}
 </script>
 
 <style>
