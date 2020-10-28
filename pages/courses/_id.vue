@@ -65,14 +65,19 @@
 						<h6 class="font-medium text-gray-900 text-2xl mb-4">
 							About <span class="text-teal-500">Course</span>
 						</h6>
+						<HeaderCoursesPart>
+							<template v-slot:content-gray>About</template>
+							<template v-slot:content-blue>Course</template>
+						</HeaderCoursesPart>
 						<p class="text-gray-600 text-lg leading-relaxed mb-3">
 							{{course.description ? course.description :"No Description Found"}}
 						</p>
 					</section>
 					<section class="mt-10">
-						<h6 class="font-medium text-gray-900 text-2xl mb-4">
-							Course <span class="text-teal-500">Photos</span>
-						</h6>
+						<HeaderCoursesPart>
+							<template v-slot:content-gray>Course</template>
+							<template v-slot:content-blue>Photos</template>
+						</HeaderCoursesPart>
 						<div class="flex flex-wrap justify-start items-center -mx-4 mt-6 pl-2">
 							<template v-if="course.images.length > 0">
 								<CoursePhoto v-for="item in course.images" :item="item" :key="item.id"/>
@@ -83,21 +88,28 @@
 						</div>
 					</section>
 					<section class="mt-10">
-						<!-- <h6 class="font-medium text-gray-900 text-2xl mb-4">
-							You Will <span class="text-teal-500">Learn</span>
-						</h6>
-						<template v-if="data.chapter.length > 0">
-							<RenderPreview/>
+						<HeaderCoursesPart>
+							<template v-slot:content-gray>You Will</template>
+							<template v-slot:content-blue>Learn</template>
+						</HeaderCoursesPart>
+						<template v-if="course.chapters.length > 0">
+							<div class="mt-3"></div>
+							<client-only>
+								<ChapterPreview v-for="chapter in course.chapters" :key="chapter.id"
+								:chapter="chapter">
+								</ChapterPreview>
+							</client-only>
 						</template>
 						<template v-else>
 							<div class="w-full text-center py-12">No Chapters Found</div>
-						</template> -->
+						</template>
 					</section>
 					<section class="mt-10 w-2/3">
-						<h6 class="font-medium text-gray-900 text-2xl mb-4">
-							Our <span class="text-teal-500">Instructor</span>
-						</h6>
-						<div class="flex items-center">
+						<HeaderCoursesPart>
+							<template v-slot:content-gray>Our</template>
+							<template v-slot:content-blue>Instructor</template>
+						</HeaderCoursesPart>
+						<div class="flex items-center mt-3">
                             <client-only>
                                 <img :src="course.mentor.profile"
 								:alt="course.mentor.name"
@@ -115,9 +127,10 @@
 						</div>
 					</section>
 					<section class="mt-10 w-6/12">
-						<h6 class="font-medium text-gray-900 text-2xl mb-4">
-							Happy <span class="text-teal-500">Students</span>
-						</h6>
+						<HeaderCoursesPart>
+							<template v-slot:content-gray>Happy</template>
+							<template v-slot:content-blue>Students</template>
+						</HeaderCoursesPart>
                         <UserReview v-for="item in course.reviews" :key="item.id" :item="item">
 							<template v-slot:item-rating>
 								<StarParts :value="item.rating"/>
@@ -152,7 +165,7 @@ import Certificate from "~/assets/icon-certificate.svg?inline";
         },
         components: {
             Nametag,Playback,Certificate
-        },
+		},
         async fetch({store, error, params}){
             try {
                 await store.dispatch('course/fetchCourse',params.id)
@@ -167,7 +180,12 @@ import Certificate from "~/assets/icon-certificate.svg?inline";
             course (){
                 return this.$store.state.course.course
             }
-        }
+		},
+		mounted(){
+			if(process.client){
+				require('vue-badger-accordion')
+			}
+		}
     }
 </script>
 

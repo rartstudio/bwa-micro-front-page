@@ -18,7 +18,9 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '~plugins/vue-js-modal.js'
+    { src: '~plugins/vue-js-modal.js'},
+    //enable client mode cause it not support ssr
+    { src: '~plugins/vue-badger-accordion.js', mode: 'client'}
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -46,6 +48,11 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    //fixing error runtime vue
+    extend(config, ctx) {
+      config.resolve.alias['vue'] = 'vue/dist/vue.common'},
+    //we need to transpile it cause it has sass
+    transpile: ['vue-badger-accordion'],
   },
 
   messages: {
