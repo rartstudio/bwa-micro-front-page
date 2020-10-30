@@ -8,7 +8,16 @@
         </div>
     </div></template>    
                 <template slot="content">
-                    <LessonPreview v-for="lesson in chapter.lessons" :key="lesson.id" :lesson="lesson"/>
+                    <LessonPreview v-for="(lesson,index) in chapter.lessons" :key="lesson.id" :lesson="lesson">
+                        <template v-slot:icon-lesson>
+                            <template v-if="index == 0">
+                                <IconPlay class="fill-teal-500 mr-6 cursor-pointer" width="20px" height="20px" @click.stop="showVideo(chapter.id,lesson.id)"/>
+                            </template>
+                            <template v-else>
+                                <IconLock class="mr-6"/>
+                            </template>
+                        </template>
+                    </LessonPreview>
                 </template>  
             </badger-accordion-item>
         </badger-accordion>
@@ -16,10 +25,27 @@
 </template>
 
 <script>
+import IconPlay from "~/assets/icon-play.svg?inline";
+import IconLock from "~/assets/icon-lock.svg?inline";
+
 export default {
+    name: "ChapterPreview",
     props :{
         chapter : {
             type: Object
+        }
+    },
+    components: {
+        IconPlay, IconLock
+    },
+    methods: {
+        showVideo (chapterId,lessonId){
+            let chapters = this.$store.state.course.course.chapters
+            let filteredChapter = chapters.filter(item => item.id == chapterId)
+            // console.log(filteredChapter)
+            let filteredLesson = filteredChapter[0].lessons.filter(item => item.id == lessonId)
+            let video = filteredLesson[0].video
+            this.$emit('show-modal-video',video)
         }
     }
 }

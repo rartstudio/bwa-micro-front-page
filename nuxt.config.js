@@ -8,7 +8,10 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', 
+        href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap'
+      }
     ]
   },
 
@@ -20,7 +23,9 @@ export default {
   plugins: [
     { src: '~plugins/vue-js-modal.js'},
     //enable client mode cause it not support ssr
-    { src: '~plugins/vue-badger-accordion.js', mode: 'client'}
+    { src: '~plugins/vue-badger-accordion.js', mode: 'client'},
+    { src: '~plugins/vue-youtube-embed.js', mode: 'client'},
+    { src: '~plugins/vue-intersect.js', mode: 'client'}
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -52,7 +57,7 @@ export default {
     extend(config, ctx) {
       config.resolve.alias['vue'] = 'vue/dist/vue.common'},
     //we need to transpile it cause it has sass
-    transpile: ['vue-badger-accordion'],
+    transpile: ['vue-badger-accordion','vue-intersect'],
   },
 
   messages: {

@@ -1,23 +1,32 @@
 <template>
     <div class="w-1/3 px-2 mb-4">
-		<div class="item relative">
-			<figure class="item-image">
-				<Preview/>
-				<client-only>
+        <div class="item relative">
+            <figure class="item-image" @click.stop="showImage(item.id)">
+                <Preview/>
+                <client-only>
                     <img :src="item.image" class="object-cover h-32 w-full"/>
                 </client-only>
-			</figure>
-		</div>
-	</div>
+            </figure>
+        </div>
+	  </div>
 </template>
 
 <script>
 import Preview from "~/assets/icon-preview.svg?inline";
 export default {
+    name: "CoursesPhoto",
     props : {
         item: {
             type: Object
         }
+    },
+    methods: {
+      showImage(id){
+        let images = this.$store.state.course.course.images
+        let filteredImage = images.filter(item => item.id == id)
+        let image = filteredImage[0].image
+        this.$emit('show-modal',image)
+      }
     },
     components : {
         Preview

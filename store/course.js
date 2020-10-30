@@ -52,4 +52,18 @@ export const actions = {
 }
 
 export const getters = {
+    getFirstVideo : state => {
+        return state.course.chapters[0].lessons[0].video
+    },
+    getTypeCourse : state => {
+        if (state.course.type == 'free') {
+            return "Free"
+        }
+        if (state.course.type != 'free') {
+            if(state.course.price != null) {
+                return state.course.price
+            }
+            return 0
+        }
+    }
 }
