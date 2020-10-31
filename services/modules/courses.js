@@ -6,5 +6,8 @@ export default {
     },
     getCourse(id){
         return apiClient.get(`/courses/${id}`)
+    },
+    searchCourses(keyword){
+        return apiClient.get(`/courses?q=${keyword}`)
     }
 }

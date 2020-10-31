@@ -161,15 +161,24 @@
 						</div>
 					</section>
 					<section class="mt-10 w-6/12">
-						<HeaderCoursesPart>
-							<template v-slot:content-gray>Happy</template>
-							<template v-slot:content-blue>Students</template>
-						</HeaderCoursesPart>
-                        <UserReview v-for="item in course.reviews" :key="item.id" :item="item">
-							<template v-slot:item-rating>
-								<StarParts :value="item.rating"/>
-							</template>
-						</UserReview>
+						<template v-if="course.reviews.length != 0">
+							<HeaderCoursesPart>
+								<template v-slot:content-gray>Happy</template>
+								<template v-slot:content-blue>Students</template>
+							</HeaderCoursesPart>
+							<UserReview v-for="item in course.reviews" :key="item.id" :item="item">
+								<template v-slot:item-rating>
+									<StarParts :value="item.rating"/>
+								</template>
+							</UserReview>
+						</template>
+						<template v-else>
+							<HeaderCoursesPart>
+								<template v-slot:content-gray>Happy</template>
+								<template v-slot:content-blue>Students</template>
+							</HeaderCoursesPart>
+							<div class="w-full py-12">No Review Found</div>
+						</template>
 					</section>
 				</div>
 			</div>

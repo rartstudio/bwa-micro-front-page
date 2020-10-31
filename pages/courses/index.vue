@@ -2,40 +2,49 @@
     <div>
         <section class="pt-10 z-30 relative" style="height:360px">
             <div class="absolute inset-0 z-0 w-full h-full bg-black opacity-75">
-                <div class="meta-title absolute bottom-0 object-fill z-0 w-full flex justify-center items-center" style="margin-bottom: -25px"></div>
-                <div class="mt-40">
-                    <h3 class="text-6xl text-center text-teal-500 font-semibold">
-                        Library
-                    </h3>
-                    <h4 class="text-lg text-center text-white">
-                        Jangan mau kalah update dengan yang lainnya .<br/>
-                        Yuk ikuti perkembangan teknologi
-                    </h4>
-                    <!-- <div class="flex flex-col relative">
-                        <input type="text"
-                            class="bg-white focus:outline-none transition-all duration-200 focus:border-teal-500 border border-gray-600 px-4 py-3 w-full mt-6"
-                            >
-                        <template>
-                            <div class="flex flex-col absolute py-2 px-4 bg-white border border-gray-600 w-full" style="top:75px">
-                                <div class="flex items-center -mx-4 py-2 cursor-pointer relative hover:bg-gray-200">
-                                    <div class="w-auto px-4" style="width:150px">
-                                        <img :src="" alt="">
-                                    </div>
-                                    <div class="w-full px-4">
-                                        <h6 class="text-gray-900 text-lg">
-
-                                        </h6>
-                                        <p class="text-gray-600">
-
-                                        </p>
-                                        <nuxt-link to="/" class="link-wrapped">
-
-                                        </nuxt-link>
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
-                    </div> -->
+                <div class="meta-title absolute bottom-0 object-fill z-0 w-full flex justify-center items-center" style="margin-bottom: -25px">
+                    <div>
+                        <h3 class="text-6xl text-center text-teal-500 font-semibold">
+                            Library
+                        </h3>
+                        <h4 class="text-lg text-center text-white">
+                            Jangan mau kalah update dengan yang lainnya .<br/>
+                            Yuk ikuti perkembangan teknologi
+                        </h4>
+                        <div class="flex flex-col relative">
+                            <input type="text"
+                                class="bg-white focus:outline-none transition-all duration-200 focus:border-teal-500 border border-gray-600 px-4 py-3 w-full mt-6"
+                                @focus="searchFocus"
+                                @blur="searchBlur"
+                                @keyup.enter="searchCourse"
+                                v-model="searchText"
+                                :placeholder="additionText"
+                            />
+                            <template v-if="!course.isLoading && searchText.length >= 3">
+                                <template v-if="course.resultSearch.length != 0">
+                                    <ResultContainer>
+                                        <template v-slot:result-content>
+                                            <ResultSearch v-for="item in course.resultSearch" :key="item.name" :item="item"/>
+                                        </template>
+                                    </ResultContainer>
+                                </template>
+                                <template v-else>
+                                    <ResultContainer>
+                                        <template v-slot:result-content>
+                                            Somehting is technically wrong
+                                        </template>
+                                    </ResultContainer>
+                                </template>
+                            </template>
+                            <template v-else-if="course.isLoading && searchText.length >= 3">
+                                <ResultContainer>
+                                    <template v-slot:result-content>
+                                        Loading ...
+                                    </template>
+                                </ResultContainer>
+                            </template>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="container mx-auto z-10 relative">
@@ -71,6 +80,24 @@
 <script>
 import {mapState} from "vuex";
     export default {
+        head() {
+            return {
+                title: 'Courses Library',
+                meta : [
+                    {
+                        hid : 'course',
+                        name : 'Courses Library',
+                        content : 'A List of our courses'
+                    }
+                ]
+            }
+        },
+        data(){
+            return {
+                additionText: "Lagi nyari kelas apa?",
+                searchText: ""
+            }
+        },
         async fetch ({store,error}){
             try {
                 await store.dispatch('course/fetchCourses')
@@ -78,12 +105,31 @@ import {mapState} from "vuex";
             
             }
         },
+        watch: {
+            searchText : function (value) {
+                if(value.length >= 3) this.searchCourse()
+            }
+        },
         computed: {
-            ...mapState(['course'])
+            ...mapState(['course']),
+        },
+        methods : {
+            searchFocus (){
+                this.additionText = "Ketik minimal 3 karakter untuk mencari"
+            },
+            searchBlur (){
+                this.additionText = "Lagi nyari kelas apa?"
+            },
+            searchCourse(){
+                
+                // console.log(this.course.courses)
+                //using api
+                this.$store.dispatch('course/findCourse',this.searchText).then()
+            }
         }
     }
 </script>
-
+x
 <style lang="scss" scoped>
 
 </style>

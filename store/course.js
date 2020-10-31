@@ -4,7 +4,9 @@ import CoursesService from "@/services/modules/courses.js";
 
 // Take note that state value should always be a function to avoid unwanted shared state on the server side.
 export const state = () => ({
+    isLoading: false,
     courses: [],
+    resultSearch: [],
     course : null,
     error : false,
     errorCode : null,
@@ -22,10 +24,25 @@ export const mutations = {
     },
     SET_ERROR_CODE(state, error){
         state.errorCode = error
+    },
+    SET_RESULT_SEARCH(state, data){
+        state.resultSearch = data
     }
 }
 
 export const actions = {
+    findCourse({commit},keyword){
+        state.isLoading = true
+        return CoursesService.searchCourses(keyword)
+            .then(response => {
+                console.log(response)
+                commit('SET_RESULT_SEARCH',response.data.data.data)
+                state.isLoading = false
+            })
+            .catch(error => {
+                commit('SET_ERROR_CODE',error);
+            })
+    },
     fetchCourses({commit}){
         return CoursesService.getCourses()
             .then(response => {
@@ -53,6 +70,9 @@ export const actions = {
 
 export const getters = {
     getFirstVideo : state => {
+        if(state.course.chapters.length == 0) {
+            return ''
+        }
         return state.course.chapters[0].lessons[0].video
     },
     getTypeCourse : state => {
