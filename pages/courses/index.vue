@@ -1,49 +1,48 @@
 <template>
     <div>
         <section class="pt-10 z-30 relative" style="height:360px">
-            <div class="absolute inset-0 z-0 w-full h-full bg-black opacity-75">
-                <div class="meta-title absolute bottom-0 object-fill z-0 w-full flex justify-center items-center" style="margin-bottom: -25px">
-                    <div>
-                        <h3 class="text-6xl text-center text-teal-500 font-semibold">
-                            Library
-                        </h3>
-                        <h4 class="text-lg text-center text-white">
-                            Jangan mau kalah update dengan yang lainnya .<br/>
-                            Yuk ikuti perkembangan teknologi
-                        </h4>
-                        <div class="flex flex-col relative">
-                            <input type="text"
-                                class="bg-white focus:outline-none transition-all duration-200 focus:border-teal-500 border border-gray-600 px-4 py-3 w-full mt-6"
-                                @focus="searchFocus"
-                                @blur="searchBlur"
-                                @keyup.enter="searchCourse"
-                                v-model="searchText"
-                                :placeholder="additionText"
-                            />
-                            <template v-if="!course.isLoading && searchText.length >= 3">
-                                <template v-if="course.resultSearch.length != 0">
-                                    <ResultContainer>
-                                        <template v-slot:result-content>
-                                            <ResultSearch v-for="item in course.resultSearch" :key="item.name" :item="item"/>
-                                        </template>
-                                    </ResultContainer>
-                                </template>
-                                <template v-else>
-                                    <ResultContainer>
-                                        <template v-slot:result-content>
-                                            Somehting is technically wrong
-                                        </template>
-                                    </ResultContainer>
-                                </template>
-                            </template>
-                            <template v-else-if="course.isLoading && searchText.length >= 3">
+            <div class="absolute inset-0 z-0 w-full h-full bg-black opacity-75"></div>
+            <div class="meta-title absolute bottom-0 object-fill z-0 w-full flex justify-center items-center" style="margin-bottom: -25px">
+                <div>
+                    <h3 class="text-6xl text-center text-teal-500 font-semibold">
+                        Library
+                    </h3>
+                    <h4 class="text-lg text-center text-white">
+                        Jangan mau kalah update dengan yang lainnya .<br/>
+                        Yuk ikuti perkembangan teknologi
+                    </h4>
+                    <div class="flex flex-col relative">
+                        <input type="text"
+                            class="bg-white focus:outline-none transition-all duration-200 focus:border-teal-500 border border-gray-600 px-4 py-3 w-full mt-6"
+                            @focus="searchFocus"
+                            @blur="searchBlur"
+                            @keyup.enter="searchCourse"
+                            v-model="searchText"
+                            :placeholder="additionText"
+                        />
+                        <template v-if="!course.isLoading && searchText.length >= 3">
+                            <template v-if="course.resultSearch.length != 0">
                                 <ResultContainer>
                                     <template v-slot:result-content>
-                                        Loading ...
+                                        <ResultSearch v-for="item in course.resultSearch" :key="item.name" :item="item"/>
                                     </template>
                                 </ResultContainer>
                             </template>
-                        </div>
+                            <template v-else>
+                                <ResultContainer>
+                                    <template v-slot:result-content>
+                                        No Course Found
+                                    </template>
+                                </ResultContainer>
+                            </template>
+                        </template>
+                        <template v-else-if="course.isLoading && searchText.length >= 3">
+                            <ResultContainer>
+                                <template v-slot:result-content>
+                                    Loading ...
+                                </template>
+                            </ResultContainer>
+                        </template>
                     </div>
                 </div>
             </div>

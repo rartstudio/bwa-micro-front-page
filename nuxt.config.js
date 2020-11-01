@@ -1,11 +1,11 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'front-page',
+    title: 'BWA MICRO',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'BWAMICRO', name: 'Tempat Kelas Kelas yang Menarik', content: 'Kursus kursus keren' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -13,6 +13,12 @@ export default {
         href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap'
       }
     ]
+  },
+
+  env : {
+    baseUrl: process.env.BASE_URL,
+    baseImage: process.env.BASE_IMAGE,
+    memberPage: process.env.MEMBER_PAGE
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -36,6 +42,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
+    '@nuxtjs/dotenv',
     ['vue-currency-filter/nuxt', {
       symbol: '',
       thousandsSeparator: '.',

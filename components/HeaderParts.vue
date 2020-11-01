@@ -33,14 +33,13 @@
                 </nuxt-link>
             </li>
             <li>
-                <nuxt-link
-                    to="/"
+                <a
+                    :href="login"
                     target="_blank"
-                    rel="noopener noereferrer"
                     class="bg-indigo-700 transition-all duration-200 text-white text-lg font-medium ml-6 px-6 py-3
                     hover:text-teal-500 hover:bg-indigo-600">
                     Masuk
-                </nuxt-link>
+                </a>
                 <!-- <nuxt-link 
                     to="/"
                     target="_blank"
@@ -64,7 +63,11 @@
 
 <script>
     export default {
-        
+        data(){
+            return {
+                login : process.env.memberPage
+            }
+        }
     }
 </script>
 

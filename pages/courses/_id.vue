@@ -92,9 +92,14 @@
 							<template v-slot:content-gray>About</template>
 							<template v-slot:content-blue>Course</template>
 						</HeaderCoursesPart>
-						<p class="text-gray-600 text-lg leading-relaxed mb-3">
-							{{course.description ? course.description :"No Description Found"}}
-						</p>
+						<template v-if="course.description">
+							<p class="text-gray-600 text-lg leading-relaxed mb-3">
+								{{course.description}}
+							</p>
+						</template>
+						<template v-else>
+							<NoFoundItem/>
+						</template>
 					</section>
 					<section class="mt-10">
 						<HeaderCoursesPart>
@@ -109,7 +114,7 @@
 								</modal>
 							</template>
 							<template v-else>
-								<div class="w-full text-center py-12">No Item Found</div>
+								<NoFoundItem/>
 							</template>
 						</div>
 					</section>
@@ -135,7 +140,7 @@
 							</client-only>
 						</template>
 						<template v-else>
-							<div class="w-full text-center py-12">No Chapters Found</div>
+							<NoFoundItem/>
 						</template>
 					</section>
 					<section class="mt-10 w-2/3">
@@ -161,11 +166,11 @@
 						</div>
 					</section>
 					<section class="mt-10 w-6/12">
+						<HeaderCoursesPart>
+							<template v-slot:content-gray>Happy</template>
+							<template v-slot:content-blue>Students</template>
+						</HeaderCoursesPart>
 						<template v-if="course.reviews.length != 0">
-							<HeaderCoursesPart>
-								<template v-slot:content-gray>Happy</template>
-								<template v-slot:content-blue>Students</template>
-							</HeaderCoursesPart>
 							<UserReview v-for="item in course.reviews" :key="item.id" :item="item">
 								<template v-slot:item-rating>
 									<StarParts :value="item.rating"/>
@@ -173,11 +178,7 @@
 							</UserReview>
 						</template>
 						<template v-else>
-							<HeaderCoursesPart>
-								<template v-slot:content-gray>Happy</template>
-								<template v-slot:content-blue>Students</template>
-							</HeaderCoursesPart>
-							<div class="w-full py-12">No Review Found</div>
+							<NoFoundItem/>
 						</template>
 					</section>
 				</div>
