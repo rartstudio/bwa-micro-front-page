@@ -17,7 +17,7 @@
         </div>
         <div class="w-1/2 flex justify-end pt-24 pr-16">
             <div class="relative" style="width: 369px; height: 440px">
-                <div class="absolute border-indigo-700 border-2 -mt-12 -mt-6 right-0" style="width: 324px; height: 374px">
+                <div class="absolute border-indigo-700 border-2 -mt-12 -mt-6 right-0" style="width: 324px; height: 374px;transform: translateX(+18px)">
                 </div>
                 <div class="absolute w-full h-full -mb-8 -ml-8">
                     <img 

@@ -5,7 +5,7 @@
 				<CircleIcon class="circle-icon"/>
 				<div class="sunshine"></div>
 				<div class="container mx-auto px-4">
-          <HeaderParts/>
+          <HeaderParts :mode="'dark-mode'"/>
           <HeroParts/>
         </div>
 			</section>
@@ -86,6 +86,11 @@ import {mapState} from "vuex";
 import CircleIcon from "~/assets/circle-accent-1.svg?inline"
 
 export default {
+  data(){
+    return {
+      theme: 'dark-mode'
+    }
+  },
   head() {
     return {
       title: 'Kelas Online BWA MICRO',

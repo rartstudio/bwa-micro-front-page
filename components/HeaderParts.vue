@@ -7,28 +7,28 @@
             <li>
                 <nuxt-link 
                     to="/" 
-                    class="text-white text-lg font-medium px-6 py-3 hover:text-teal-500">
+                    :class="[mode == 'dark-mode' ? 'dark-mode' : mode]">
                     Home
                 </nuxt-link>
             </li>
             <li>
                 <nuxt-link 
                     to="/" 
-                    class="text-white text-lg font-medium px-6 py-3 hover:text-teal-500">
+                    :class="[mode == 'dark-mode' ? 'dark-mode' : mode]">
                     Pricing
                 </nuxt-link>
             </li>
             <li>
                 <nuxt-link 
                     to="/" 
-                    class="text-white text-lg font-medium px-6 py-3 hover:text-teal-500">
+                    :class="[mode == 'dark-mode' ? 'dark-mode' : mode]">
                     Features
                 </nuxt-link>
             </li>
             <li>
                 <nuxt-link 
                     to="/" 
-                    class="text-white text-lg font-medium px-6 py-3 hover:text-teal-500">
+                    :class="[mode == 'dark-mode' ? 'dark-mode' : mode]">
                     Story
                 </nuxt-link>
             </li>
@@ -36,8 +36,7 @@
                 <a
                     :href="login"
                     target="_blank"
-                    class="bg-indigo-700 transition-all duration-200 text-white text-lg font-medium ml-6 px-6 py-3
-                    hover:text-teal-500 hover:bg-indigo-600">
+                    :class="[mode == 'dark-mode' ? 'dark-mode' : mode, 'btn-login']">
                     Masuk
                 </a>
                 <!-- <nuxt-link 
@@ -65,12 +64,35 @@
     export default {
         data(){
             return {
-                login : process.env.memberPage
+                login : process.env.memberPage,
+            }
+        },
+        props : {
+            mode: {
+                type: String,
+                default : 'dark-mode'
             }
         }
     }
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+.light-mode {
+    @apply text-black text-lg font-medium px-6 py-3
+}
+.light-mode:hover {
+    @apply text-teal-500
+}
+.dark-mode {
+    @apply text-white text-lg font-medium px-6 py-3
+}
+.dark-mode:hover {
+    @apply text-teal-500
+}
+.btn-login {
+    @apply bg-indigo-700 transition-all duration-200 ml-6
+}
+.btn-login:hover {
+    @apply bg-indigo-600;
+}
 </style>
