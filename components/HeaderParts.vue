@@ -33,7 +33,7 @@
                 </nuxt-link>
             </li>
             <li>
-                <template v-if="!isCookieExist">
+                <template v-if="isCookieExist">
                     <a
                         :href="login+'/login'"
                         target="_blank"
@@ -63,6 +63,9 @@
                         </span>
                         Hi, {{ userLogin.name }}
                     </nuxt-link>
+                    <a :href="login+'/user'">
+                        Kelas Saya
+                    </a>
                 </template>
             </li>
         </ul>
@@ -70,11 +73,12 @@
 </template>
 
 <script>
+import cookies from 'js-cookie';
     export default {
         data(){
             return {
                 login : process.env.memberPage,
-                isCookieExist: true,
+                isCookieExist: false,
                 userLogin: {}
             }
         },
@@ -84,22 +88,27 @@
                 default : 'dark-mode'
             }
         },
-        mounted(){
-            const userCookies = window.document.cookie;
-            if(userCookies){
+        created(){
+            const resultCookie = cookies.get('BWAMICRO:user');
+            // const userCookies = window.document.cookie;
+            if(resultCookie != undefined){
                 //get cookie
-                const splitCookie = userCookies.split(";").find(item => item.indexOf("BWAMICRO:user") > -1);
+                // const splitCookie = userCookies.split(";").find(item => item.indexOf("BWAMICRO:user") > -1);
 
-                if(splitCookie == undefined){
-                    return this.isCookieExist = false
-                }
+                // if(splitCookie == undefined){
+                //     return this.isCookieExist = false
+                // }
                 
-                //split result cookie and get index 1 cause there is our cookie
-                const resultCookie = splitCookie.split('=')[1]
+                // //split result cookie and get index 1 cause there is our cookie
+                // const resultCookie = splitCookie.split('=')[1]
                 
-                //convert result cookie to json
+                // convert result cookie to json
+                
                 this.userLogin = JSON.parse(resultCookie);
-                console.log(this.userLogin)
+                this.isCookieExist = false 
+            }
+            else {
+                this.isCookieExist = true
             }
         }
     }

@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/proxy": "^2.0.1",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "js-cookie": "^2.2.1",
     "nuxt": "^2.14.6",
     "vue-badger-accordion": "^2.0.2",
     "vue-currency-filter": "^5.2.0",
