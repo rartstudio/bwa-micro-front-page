@@ -65,6 +65,15 @@ export const actions = {
                 }
                 commit('SET_ERROR_CODE',404);
             })
+    },
+    addCourse({commit},course){
+        const token = this.$cookies.get('BWAMICRO:token')
+        this.$axios.setHeader('Authorization',token)
+        // console.log(course)
+        return CoursesService.myCourse(course)
+            .then(response => {
+                console.log(response)
+            })
     }
 }
 

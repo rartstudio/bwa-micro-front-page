@@ -71,16 +71,19 @@
 								<h3 class="text-2xl text-gray-900">{{course.name ? course.name : 'Judul Kelas'}}</h3>
 							</div>
 							<h5 class="text-2xl text-teal-500 whitespace-no-wrap mr-4">
-								{{ getTypeCourse | currency }}
+								<template v-if="getTypeCourse == 'Free'">
+									Free
+								</template>
+								<template v-else>
+									{{ getTypeCourse | currency }}
+								</template>
 							</h5>
-							<nuxt-link 
-								to="/"
-								target="_blank"
-								rel="noopener noreferrer"
+							<button 
+								@click="addToMyCourse(course.id)"
 								class="bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3 whitespace-no-wrap"
 								>
 								{{ getTypeCourse == 'Free' ? 'Enroll Now' : "Buy Now" }}
-							</nuxt-link>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -234,6 +237,9 @@ import VueCurrencyFilter from 'vue-numeric';
 			},
 			hide (data) {
 				this.$modal.hide(data);
+			},
+			addToMyCourse(id){
+				this.$store.dispatch('course/addCourse',id)
 			}
 		},
         components: {

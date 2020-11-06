@@ -89,21 +89,8 @@ import cookies from 'js-cookie';
             }
         },
         created(){
-            const resultCookie = cookies.get('BWAMICRO:user');
-            // const userCookies = window.document.cookie;
+            const resultCookie = cookies.get('BWAMICRO:user')
             if(resultCookie != undefined){
-                //get cookie
-                // const splitCookie = userCookies.split(";").find(item => item.indexOf("BWAMICRO:user") > -1);
-
-                // if(splitCookie == undefined){
-                //     return this.isCookieExist = false
-                // }
-                
-                // //split result cookie and get index 1 cause there is our cookie
-                // const resultCookie = splitCookie.split('=')[1]
-                
-                // convert result cookie to json
-                
                 this.userLogin = JSON.parse(resultCookie);
                 this.isCookieExist = false 
             }

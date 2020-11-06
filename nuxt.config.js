@@ -57,6 +57,8 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/proxy',
+    '@nuxtjs/axios',
+    'cookie-universal-nuxt',
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -94,6 +96,6 @@ export default {
   //loading-bar
   loading: { 
     color: '#ed8936',
-    height: '5px' 
+    height: '2px' 
   },
 }

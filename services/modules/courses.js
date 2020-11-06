@@ -9,5 +9,8 @@ export default {
     },
     searchCourses(keyword){
         return apiClient.get(`/courses?q=${keyword}`)
+    },
+    myCourse(course){
+        return apiClient.post(`/my-courses`,course)
     }
 }
