@@ -1,5 +1,5 @@
 /* eslint-disable */
-import CoursesService from "@/services/modules/courses.js";
+// import CoursesService from "@/services/modules/courses.js";
 
 
 // Take note that state value should always be a function to avoid unwanted shared state on the server side.
@@ -33,10 +33,10 @@ export const mutations = {
 export const actions = {
     findCourse({commit},keyword){
         state.isLoading = true
-        return CoursesService.searchCourses(keyword)
+        return this.$axios.$get(`courses?q=${keyword}`)
             .then(response => {
                 console.log(response)
-                commit('SET_RESULT_SEARCH',response.data.data.data)
+                commit('SET_RESULT_SEARCH',response.data.data)
                 state.isLoading = false
             })
             .catch(error => {
@@ -44,9 +44,10 @@ export const actions = {
             })
     },
     fetchCourses({commit}){
-        return CoursesService.getCourses()
+        return this.$axios.$get(`courses`)
             .then(response => {
-                commit('SET_COURSES', response.data.data.data);
+                // console.log(response)
+                commit('SET_COURSES', response.data.data);
             })
             .catch(error => {
                 if(error.errno == 'ECONNREFUSED'){
@@ -55,9 +56,9 @@ export const actions = {
             })
     },
     fetchCourse({commit},id){
-        return CoursesService.getCourse(id)
+        return this.$axios.$get(`courses/${id}`)
             .then(response => {
-                commit('SET_COURSE',response.data.data);
+                commit('SET_COURSE',response.data);
             })
             .catch(error => {
                 if(error.errno == 'ECONNREFUSED'){
@@ -69,9 +70,9 @@ export const actions = {
     addCourse({commit},course){
         const token = this.$cookies.get('BWAMICRO:token')
         this.$axios.setHeader('Authorization',token)
-        console.log(token);
+        // console.log(token);
         // console.log(course)
-        return CoursesService.myCourse(course)
+        return this.$axios.$post(`/my-courses`,course)
             .then(response => {
                 window.location.href= `${process.env.memberPage}/joined/${course}`
             })

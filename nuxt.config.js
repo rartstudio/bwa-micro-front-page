@@ -54,6 +54,11 @@ export default {
     }]
   ],
 
+  axios : {
+    baseURL: process.env.BASE_URL,
+    credentials: true,
+  },
+
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/proxy',
