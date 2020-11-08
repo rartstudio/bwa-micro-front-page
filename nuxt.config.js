@@ -31,7 +31,8 @@ export default {
     //enable client mode cause it not support ssr
     { src: '~plugins/vue-badger-accordion.js', mode: 'client'},
     { src: '~plugins/vue-youtube-embed.js', mode: 'client'},
-    { src: '~plugins/vue-intersect.js', mode: 'client'}
+    { src: '~plugins/vue-intersect.js', mode: 'client'},
+    { src: '~plugins/vue-loading-overlay.js', mode: 'client'}
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

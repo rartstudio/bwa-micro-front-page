@@ -61,7 +61,12 @@
                     </div>
                 </template>
             </HeaderCoursesPart>
-            <template v-if="course.courses.length != 0">
+            <template v-if="loadingState">
+                <div class="relative h-24 w-full">
+                    <div class="vld-parent" ref="loadingContainer"></div>
+                </div> 
+            </template>
+            <template v-else-if="course.courses.length != 0">
                 <div class="flex justify-start items-center flex-wrap -mx-4 mt-6">
                     <CoursePart v-for="item in course.courses" :key="item.id" :item="item"/>
                 </div>
@@ -94,14 +99,25 @@ import {mapState} from "vuex";
         data(){
             return {
                 additionText: "Lagi nyari kelas apa?",
-                searchText: ""
+                searchText: "",
+                loadingState: true,
+                fullPage: false
             }
         },
-        async fetch ({store,error}){
+        async mounted (){
+            this.loadingState = true
+            let loader = this.$loading.show({
+                // Optional parameters
+                container: this.fullPage ? null : this.$refs.loadingContainer,
+                color : '#161A4F'
+            });
+
             try {
-                await store.dispatch('course/fetchCourses')
+                await this.$store.dispatch('course/fetchCourses')
+                loader.hide()
+                this.loadingState = false
             } catch(error) {
-            
+                this.loadingState = false
             }
         },
         watch: {
@@ -130,5 +146,7 @@ import {mapState} from "vuex";
 </script>
 x
 <style lang="scss" scoped>
-
+.vld-parent {
+    position: static !important;
+}
 </style>

@@ -23,13 +23,20 @@
             </div>
           </template>
         </HeaderCoursesPart>
-        <template v-if="course.courses.length != 0">
-          <div class="flex justify-start items-center flex-wrap -mx-4 mt-6">
-            <CoursePart v-for="item in course.courses" :key="item.id" :item="item"/>
-          </div>
+        <template v-if="loadingState">
+          <div class="relative h-24 w-full">
+            <div class="vld-parent" ref="loadingContainer"></div>
+          </div> 
         </template>
         <template v-else>
-          <div class="w-full text-center -py-12">No Item Found</div>
+          <template v-if="course.courses.length != 0">
+            <div class="flex justify-start items-center flex-wrap -mx-4 mt-6">
+              <CoursePart v-for="item in course.courses" :key="item.id" :item="item"/>
+            </div>
+          </template>
+          <template v-else>
+            <div class="w-full text-center -py-12">No Item Found</div>
+          </template>
         </template>
       </section>
       <section class="container mx-auto pt-24 px-4">
@@ -78,7 +85,9 @@
   left: 0;
 }
 
-
+.vld-parent {
+    position: static !important;
+}
 </style>
 
 <script>
@@ -88,7 +97,9 @@ import CircleIcon from "~/assets/circle-accent-1.svg?inline"
 export default {
   data(){
     return {
-      theme: 'dark-mode'
+      theme: 'dark-mode',
+      loadingState: true,
+      fullPage: false
     }
   },
   head() {
@@ -106,18 +117,24 @@ export default {
   components : {
     CircleIcon
   },
-  async fetch ({store,error}){
-    try {
-      await store.dispatch('course/fetchCourses')
-    } catch(error) {
-      
+  async mounted(){
+    this.loadingState = true
+    let loader = this.$loading.show({
+      container: this.fullPage ? null : this.$refs.loadingContainer,
+    });
+
+    try{
+      await this.$store.dispatch('course/fetchCourses')
+      loader.hide()
+      this.loadingState = false
     }
-  },
-  mounted(){
-    let toast = document.getElementById('toastError');
-    setTimeout(function(){
-      toast.classList.toggle('hidden')
-    },10000)
+    catch(e){
+      this.loadingState = false
+    }
+    // let toast = document.getElementById('toastError');
+    // setTimeout(function(){
+    //   toast.classList.toggle('hidden')
+    // },10000)
   },
   computed: {
     ...mapState(['course'])

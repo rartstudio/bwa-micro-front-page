@@ -70,9 +70,11 @@ export const actions = {
     addCourse({commit},course){
         const token = this.$cookies.get('BWAMICRO:token')
         this.$axios.setHeader('Authorization',token)
-        // console.log(token);
-        // console.log(course)
-        return this.$axios.$post(`/my-courses`,course)
+        console.log(course);
+        let data = {
+            course_id : course
+        }
+        return this.$axios.$post(`/my-courses`,data)
             .then(response => {
                 window.location.href= `${process.env.memberPage}/joined/${course}`
             })
