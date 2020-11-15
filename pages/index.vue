@@ -1,9 +1,9 @@
 <template>
   <div>
     <main>
-      <section class="header-clipping pt-10 px-4">
+      <section class="header-clipping pt-10 min-h-screen md:min-h-0">
+				<div class="sunshine max-w-full"></div>
 				<CircleIcon class="circle-icon"/>
-				<div class="sunshine"></div>
 				<div class="container mx-auto px-4">
           <HeaderParts :mode="'dark-mode'"/>
           <HeroParts/>
@@ -30,7 +30,7 @@
         </template>
         <template v-else>
           <template v-if="course.courses.length != 0">
-            <div class="flex justify-start items-center flex-wrap -mx-4 mt-6">
+            <div class="flex flex-wrap justify-start items-center flex-wrap -mx-4 mt-6">
               <CoursePart v-for="item in course.courses" :key="item.id" :item="item"/>
             </div>
           </template>
@@ -68,7 +68,7 @@
   left: 50%;
   transform: translateX(-50%);
   width:515px;
-  height: 90%;
+  height: 85%;
   opacity: 0.8;
   clip-path: polygon(46% 0%,82% 0%,67% 100%,0% 100%);
   background: transparent linear-gradient(130.09deg,#3d47bd 0%, #2e37a4 50.8%)
@@ -83,6 +83,14 @@
   position: absolute;
   bottom: -8px;
   left: 0;
+}
+
+@media (max-width: 640px){
+  .header-clipping svg#accent-circle {
+    bottom: 50px;
+    transform: rotate(-34deg);
+    left: -27px;
+  }
 }
 
 .vld-parent {

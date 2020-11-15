@@ -1,10 +1,10 @@
 <template>
-    <div class="w-1/3 px-2 mb-4">
+    <div class="w-full md:w-1/3 px-2 mb-4">
         <div class="item relative">
             <figure class="item-image" @click.stop="showImage(item.id)">
                 <Preview/>
                 <client-only>
-                    <img :src="item.image" class="object-cover h-32 w-full"/>
+                    <img :src="item.image" class="object-cover h-40 md:h-32 w-full"/>
                 </client-only>
             </figure>
         </div>

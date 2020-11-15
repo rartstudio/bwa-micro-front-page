@@ -1,5 +1,5 @@
 <template>
-	<div class="border border-gray-300 bg-white p-6" style="width:290px">
+	<div class="border border-gray-300 bg-white p-6 w-full md:w-1/3" style="width:290px">
 		<div class="flex">
 			<div class="w-auto">
 				<slot name="data-icon"></slot>

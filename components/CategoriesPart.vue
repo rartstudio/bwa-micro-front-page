@@ -1,6 +1,6 @@
 <template>
-    <div class="flex justify-start items-center -mx-4 mt-6">
-        <div class="w-1/6 px-4 h-100">
+    <div class="flex flex-wrap justify-start items-center -mx-4 mt-6">
+        <div class="w-3/6 md:w-1/6 px-4 h-100 mb-8 md:mb-0">
             <div class="card relative transition-all duration-200">
                 <!-- <img :src="require(`~/assets/${item.icon}.svg`)" class="hover:fill-white"/> -->
                 <BusinessDevelopment/>
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-1/6 px-4 h-100">
+        <div class="w-3/6 md:w-1/6 px-4 h-100 mb-8 md:mb-0">
             <div class="card relative transition-all duration-200">
                 <!-- <img :src="require(`~/assets/${item.icon}.svg`)" class="hover:fill-white"/> -->
                 <ContentWriter/>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-1/6 px-4 h-100">
+        <div class="w-3/6 md:w-1/6 px-4 h-100 mb-8 md:mb-0">
             <div class="card relative transition-all duration-200">
                 <!-- <img :src="require(`~/assets/${item.icon}.svg`)" class="hover:fill-white"/> -->
                 <ProductAdvertisement/>
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-1/6 px-4 h-100">
+        <div class="w-3/6 md:w-1/6 px-4 h-100 mb-8 md:mb-0">
             <div class="card relative transition-all duration-200">
                 <!-- <img :src="require(`~/assets/${item.icon}.svg`)" class="hover:fill-white"/> -->
                 <CustomerRelationship/>
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-1/6 px-4 h-100">
+        <div class="w-3/6 md:w-1/6 px-4 h-100 mb-8 md:mb-0">
             <div class="card relative transition-all duration-200">
                 <!-- <img :src="require(`~/assets/${item.icon}.svg`)" class="hover:fill-white"/> -->
                 <GameDevelopment/>
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-1/6 px-4 h-100">
+        <div class="w-3/6 md:w-1/6 px-4 h-100 mb-8 md:mb-0">
             <div class="card relative transition-all duration-200">
                 <!-- <img :src="require(`~/assets/${item.icon}.svg`)" class="hover:fill-white"/> -->
                 <TravelGuidance/>

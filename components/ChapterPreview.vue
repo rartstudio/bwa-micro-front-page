@@ -8,16 +8,21 @@
         </div>
     </div></template>    
                 <template slot="content">
-                    <LessonPreview v-for="(lesson,index) in chapter.lessons" :key="lesson.id" :lesson="lesson">
-                        <template v-slot:icon-lesson>
-                            <template v-if="index == 0">
-                                <IconPlay class="fill-teal-500 mr-6 cursor-pointer" width="20px" height="20px" @click.stop="showVideo(chapter.id,lesson.id)"/>
+                    <template v-if="!chapter.lessons">
+                        No Lesson
+                    </template>
+                    <template v-else>
+                        <LessonPreview v-for="(lesson,index) in chapter.lessons" :key="lesson.id" :lesson="lesson">
+                            <template v-slot:icon-lesson>
+                                <template v-if="index == 0">
+                                    <IconPlay class="fill-teal-500 mr-6 cursor-pointer" width="20px" height="20px" @click.stop="showVideo(chapter.id,lesson.id)"/>
+                                </template>
+                                <template v-else>
+                                    <IconLock class="mr-6"/>
+                                </template>
                             </template>
-                            <template v-else>
-                                <IconLock class="mr-6"/>
-                            </template>
-                        </template>
-                    </LessonPreview>
+                        </LessonPreview>
+                    </template>
                 </template>  
             </badger-accordion-item>
         </badger-accordion>

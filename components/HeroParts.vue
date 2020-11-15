@@ -1,21 +1,21 @@
 <template>
     <div class="flex justify-between items-center">
-        <div class="w-1/2">
+        <div class="w-full md:w-1/2 mt-8 md:mt-8">
             <h1 class="text-5xl text-white mb-5 font-semibold">
-                <span class="text-teal-400">The New</span> Way to <br/> Achieve Good
+                <span class="text-teal-400">The New</span> Way to <br class="hidden md:block"/> Achieve Good
                 <span class="text-teal-400">Skills</span>
             </h1>
             <p class="text-white text-lg mb-8 font-light">
                 We Provide tons of pathskill that you <br> can choose and focus on
             </p>
-            <form>
-                <input type="text" class="bg-white focus:outline-none border-0 px-6 py-3 w-1/2" placeholder="your email address">
-                <button class="bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3">
+            <form class="flex">
+                <input type="text" class="bg-white focus:outline-none border-0 px-1 md:px-6 py-3 w-full md:w-1/2" placeholder="your email address">
+                <button class="bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-4 md:px-6 py-3 whitespace-no-wrap">
                     Daftar Now
                 </button>
             </form>
         </div>
-        <div class="w-1/2 flex justify-end pt-24 pr-16">
+        <div class="hidden w-1/2 md:flex justify-end pt-24 pr-16">
             <div class="relative" style="width: 369px; height: 440px">
                 <div class="absolute border-indigo-700 border-2 -mt-12 right-0" style="width: 324px; height: 374px;transform: translateX(+18px)">
                 </div>

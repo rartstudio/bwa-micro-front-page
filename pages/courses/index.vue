@@ -3,11 +3,11 @@
         <section class="pt-10 z-30 relative" style="height:360px">
             <div class="absolute inset-0 z-0 w-full h-full bg-black opacity-75"></div>
             <div class="meta-title absolute bottom-0 object-fill z-0 w-full flex justify-center items-center" style="margin-bottom: -25px">
-                <div>
+                <div class="px-4">
                     <h3 class="text-6xl text-center text-teal-500 font-semibold">
                         Library
                     </h3>
-                    <h4 class="text-lg text-center text-white">
+                    <h4 class="text-lg md:text-lg text-center text-white">
                         Jangan mau kalah update dengan yang lainnya .<br/>
                         Yuk ikuti perkembangan teknologi
                     </h4>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container mx-auto z-10 relative">
+            <div class="container mx-auto z-10 relative px-4">
                 <HeaderParts/>
             </div>
         </section>
