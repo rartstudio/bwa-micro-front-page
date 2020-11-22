@@ -119,7 +119,7 @@
 							<div class="flex flex-wrap justify-start items-center -mx-4 mt-6 pl-2">
 								<template v-if="course.images.length > 0">
 									<CoursePhoto v-for="item in course.images" :item="item" :key="item.id" @show-modal="showModal"/>
-									<modal name="modal-preview" class="image-modal">
+									<modal name="modal-preview" class="image">
 										<img :src="selected" class="md:object-cover w-full"/>
 									</modal>
 								</template>
@@ -138,7 +138,7 @@
 								<client-only>
 									<ChapterPreview v-for="chapter in course.chapters" :key="chapter.id"
 									:chapter="chapter" @show-modal-video="showModalVideo"/>
-									<modal name="modal-preview-video" class="image-modal">
+									<modal name="modal-preview-video" class="video">
 										<client-only>
 											<youtube-media
 												:video-id="selected"
@@ -222,12 +222,12 @@ import VueCurrencyFilter from 'vue-numeric';
 		},
         // head(){
         //     return {
-        //         title: this.course.name,
+        //         title: this.course ? this.course.name : 'BWA MICRO',
         //         meta: [
         //             {
         //                 hid: 'description',
         //                 name: 'description',
-        //                 content: 'Course' + this.course.name
+        //                 content: 'Course' + this.course ? this.course.name : 'BWA MICRO'
         //             }
         //         ]
         //     }
@@ -291,23 +291,39 @@ import VueCurrencyFilter from 'vue-numeric';
 }
 
 .video-wrapper iframe {
-  @apply .absolute .top-0 .left-0 .w-full .h-full;
+  @apply absolute top-0 left-0 w-full h-full;
 }
 
-.image-modal .vm--modal{
-	top: 120px !important;
+.video .vm--modal{
 	left: 50% !important;
-	transform: translate(-50%, 0%) !important;
+	top: 0 !important;
+	transform: translate(-50%, 30%) !important;
 	height: auto !important;
 }
 @media (max-width:640px){
-	.image-modal .vm--modal{
-		top: 120px !important;
+	.video .vm--modal{
+		top: 0 !important;
 		width: 100% !important;
+		transform: translate(-50%, 42%) !important;
 		height: 0;
 	}
 	iframe {
 		width:100% !important;
+	}
+}
+
+.image .vm--modal{
+	left: 50% !important;
+	top: 0 !important;
+	transform: translate(-50%, 30%) !important;
+	height: auto !important;
+}
+@media (max-width:640px){
+	.image .vm--modal{
+		top: 0 !important;
+		width: 100% !important;
+		transform: translate(-50%, 80%) !important;
+		height: 0;
 	}
 }
 </style>

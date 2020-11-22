@@ -17,6 +17,7 @@ export default {
 
   env : {
     baseUrl: process.env.BASE_URL,
+    // baseUrl: 'perpustest.xyz',
     baseImage: process.env.BASE_IMAGE,
     memberPage: process.env.MEMBER_PAGE
   },

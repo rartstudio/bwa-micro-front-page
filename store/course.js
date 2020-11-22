@@ -74,9 +74,19 @@ export const actions = {
         let data = {
             course_id : course
         }
+        if(!token){
+            return window.location.href=`${process.env.memberPage}/login`;
+        }
         return this.$axios.$post(`/my-courses`,data)
             .then(response => {
-                window.location.href= `${process.env.memberPage}/joined/${course}`
+                console.log(response)
+                if(response.data.snap_url){
+                    //open new tab
+                    window.open(`${response.data.snap_url}`,'_blank');
+                }
+                else {
+                    window.location.href= `${process.env.memberPage}/joined/${course}`
+                }
             })
     }
 }
