@@ -54,7 +54,7 @@
                         rel="noopener noreferrer" 
                         class="text-lg text-white font-medium px-6 py-3  ml-6 inline-flex items-center duration-200 transition-all hover:bg-indigo-1000 hover:text-teal-500">
                         
-                        <span class="rounded-full overflow-hidden mr-3 border-2 border-orange-500">
+                        <span class="rounded-full overflow-hidden mr-3 border-2 border-orange-500 w-10 h-10">
                             <template v-if="userLogin.thumbnail">
                                 <client-only>
                                     <img
@@ -64,7 +64,7 @@
                                 </client-only>
                             </template>
                             <template v-else>
-                                <div class="fill-indigo-500 w-8 h-8 inline-block rounded-full"></div>
+                                <div class="bg-indigo-500 w-10 h-10 inline-block rounded-full"></div>
                             </template>
                         </span>
                         Hi, {{ userLogin.name }}
