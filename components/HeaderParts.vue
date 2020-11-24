@@ -59,7 +59,7 @@
                                 <client-only>
                                     <img
                                         :src="userLogin.thumbnail"
-                                        class="object-cover w-8 h-8 inline-block"
+                                        class="object-cover w-8 h-8 inline-block "
                                     />
                                 </client-only>
                             </template>
